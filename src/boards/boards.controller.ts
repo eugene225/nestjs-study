@@ -1,3 +1,4 @@
+import { Board } from './board.model';
 import { BoardsService } from './boards.service';
 import { Controller, Get } from '@nestjs/common';
 
