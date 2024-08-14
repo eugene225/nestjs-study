@@ -62,6 +62,17 @@ export class BoardsService {
   //   board.status = status;
   //   return board;
   // }
+
+  async deleteById(id: number): Promise<void> {
+    const result = await this.boardRepository.delete(id);
+
+    if (!result.affected) {
+      throw new NotFoundException(`Board Is Not Exist, id : ${id}`);
+    }
+
+    console.log('result', result);
+  }
+
   // deleteBoardById(id: string): void {
   //   const found = this.getBoardById(id);
   //   this.boards = this.boards.filter((board) => board.id !== found.id);

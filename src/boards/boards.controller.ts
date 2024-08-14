@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   UsePipes,
   ValidationPipe,
@@ -49,6 +51,11 @@ export class BoardsController {
   // ): Board {
   //   return this.boardsService.updateBoardStatus(id, status);
   // }
+
+  @Delete('/:id')
+  deleteById(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.boardsService.deleteById(id);
+  }
 
   // @Delete('/:id')
   // deleteBoardById(@Param('id') id: string): void {
