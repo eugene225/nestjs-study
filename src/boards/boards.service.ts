@@ -11,6 +11,11 @@ export class BoardsService {
     @InjectRepository(BoardRepository)
     private boardRepository: BoardRepository,
   ) {}
+
+  async getAll(): Promise<Board[]> {
+    return await this.boardRepository.find();
+  }
+
   // getAllBoards(): Board[] {
   //   return this.boards;
   // }
