@@ -27,7 +27,7 @@ export class AuthService {
       const payload = { username };
       const accessToken = await this.jwtService.sign(payload);
 
-      return AuthLoginDto.create(accessToken, username);
+      return AuthLoginDto.create(accessToken);
     } else {
       throw new UnauthorizedException('login failed');
     }
