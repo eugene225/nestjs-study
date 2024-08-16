@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: process.env.NODE_ENV === 'dev' ? '.dev.env' : '.local.env',
+      envFilePath: `${process.cwd()}/envs/${process.env.NODE_ENV}.env`,
     }),
     TypeOrmModule.forRoot(typeORMconfig),
     BoardsModule,
