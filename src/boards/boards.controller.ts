@@ -18,6 +18,7 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe'
 import { BoardStatus } from './board-status.enum';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/global/decorator/get-user.decorator';
+import { User } from 'src/auth/users/user.entity';
 
 @Controller('boards')
 @UseGuards(AuthGuard())
@@ -25,8 +26,8 @@ export class BoardsController {
   constructor(private boardsService: BoardsService) {}
 
   @Get()
-  getAllBoards(): Promise<Board[]> {
-    return this.boardsService.getAll();
+  getAllBoardsByUser(@GetUser() user: User): Promise<Board[]> {
+    return this.boardsService.getAllBoardsByUser(user);
   }
 
   // @Get()
