@@ -77,8 +77,11 @@ export class BoardsController {
   // }
 
   @Delete('/:id')
-  deleteById(@Param('id', ParseIntPipe) id: number): Promise<void> {
-    return this.boardsService.deleteById(id);
+  deleteById(
+    @Param('id', ParseIntPipe) id: number,
+    @GetUser() user: User,
+  ): Promise<void> {
+    return this.boardsService.deleteById(id, user);
   }
 
   // @Delete('/:id')
